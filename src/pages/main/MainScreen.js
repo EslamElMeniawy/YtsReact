@@ -7,9 +7,9 @@ import { RecyclerListView, DataProvider } from 'recyclerlistview';
 import PropTypes from 'prop-types';
 
 import AppStatusBar from '../../components/AppStatusBar';
-import MovieCard from '../../components/MovieCard';
+import MovieCard from '../../components/MovieCard/MovieCard';
 import { Logo } from '../../utils/StaticImages';
-import { GeneralStyles, MainStyles } from '../../utils/Styles';
+import Styles from './Styles';
 import { green } from '../../utils/Colors';
 import AxiosService from '../../utils/AxiosService';
 import { logDebug, logError } from '../../utils/DebugUtils';
@@ -50,7 +50,7 @@ export default class MainScreen extends Component {
   }
 
   getLoadingView = () => (
-    <View style={MainStyles.loadingErrorContainer}>
+    <View style={Styles.loadingErrorContainer}>
       <ActivityIndicator size="large" color={green} />
     </View>
   );
@@ -59,9 +59,9 @@ export default class MainScreen extends Component {
     const { errorMessage } = this.state;
 
     return (
-      <View style={MainStyles.loadingErrorContainer}>
+      <View style={Styles.loadingErrorContainer}>
         <Text
-          style={MainStyles.error}
+          style={Styles.error}
           onPress={() => {
             this.setState({ isLoading: true });
           }}
@@ -78,7 +78,7 @@ export default class MainScreen extends Component {
 
     return (
       <RecyclerListView
-        style={{ flex: 1 }}
+        style={Styles.recycler}
         dataProvider={dataProvider}
         layoutProvider={layoutProvider}
         rowRenderer={(type, movie) => <MovieCard navigation={navigation} movie={movie} />}
@@ -200,11 +200,11 @@ export default class MainScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={GeneralStyles.safeAreaView}>
+      <SafeAreaView style={Styles.safeAreaView}>
         <AppStatusBar />
         <Toolbar
-          style={GeneralStyles.toolbar}
-          centerElement={<Image style={GeneralStyles.toolbarImage} source={Logo} />}
+          style={Styles.toolbar}
+          centerElement={<Image style={Styles.toolbarImage} source={Logo} />}
         />
         {this.getContent()}
       </SafeAreaView>

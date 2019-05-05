@@ -1,58 +1,6 @@
-import * as Colors from './Colors';
+import * as Colors from '../../utils/Colors';
 
-export const GeneralStyles = {
-  safeAreaView: {
-    flex: 1,
-    backgroundColor: Colors.grey,
-  },
-  toolbar: {
-    container: { backgroundColor: Colors.grey },
-    centerElementContainer: {
-      marginRight: 16,
-      marginTop: 8,
-      marginBottom: 8,
-    },
-    titleText: {
-      color: Colors.white,
-      textAlign: 'center',
-    },
-  },
-  toolbarImage: {
-    flex: 1,
-    resizeMode: 'contain',
-    width: undefined,
-    height: undefined,
-    marginStart: 16,
-    marginEnd: 16,
-  },
-};
-
-export const SplashStyles = {
-  image: {
-    flex: 1,
-    alignSelf: 'center',
-    resizeMode: 'contain',
-    width: 300,
-    height: undefined,
-    marginStart: 16,
-    marginEnd: 16,
-  },
-};
-
-export const MainStyles = {
-  loadingErrorContainer: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  error: {
-    color: Colors.greyLight,
-    textAlign: 'center',
-    margin: 16,
-    fontSize: 20,
-  },
-};
-
-export const MovieCardStyles = {
+const Styles = {
   card: {
     container: {
       flex: 1,
@@ -111,7 +59,6 @@ export const MovieCardStyles = {
   genre: {
     backgroundColor: Colors.grey,
     color: Colors.white,
-    fontWeight: 'bold',
     marginEnd: 8,
     paddingHorizontal: 8,
     paddingVertical: 4,
@@ -128,3 +75,5 @@ export const MovieCardStyles = {
     },
   },
 };
+
+export default Styles;

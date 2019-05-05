@@ -5,10 +5,10 @@ import {
 import { Card, Icon, Button } from 'react-native-material-ui';
 import PropTypes from 'prop-types';
 
-import { logDebug } from '../utils/DebugUtils';
-import { MovieCardStyles } from '../utils/Styles';
-import { Placeholder } from '../utils/StaticImages';
-import { green } from '../utils/Colors';
+import { logDebug } from '../../utils/DebugUtils';
+import Styles from './Styles';
+import { Placeholder } from '../../utils/StaticImages';
+import { green } from '../../utils/Colors';
 
 const isIOS = Platform.OS === 'ios';
 
@@ -37,44 +37,43 @@ export default class MovieCard extends PureComponent {
     navigation.navigate('Details', { movie });
   };
 
+  getRating = rating => `${rating}/10`;
+
   render() {
     const { movie, navigation } = this.props;
 
     return (
-      <Card onPress={() => this.handleClick(movie, navigation)} style={MovieCardStyles.card}>
-        <View style={MovieCardStyles.container}>
+      <Card onPress={() => this.handleClick(movie, navigation)} style={Styles.card}>
+        <View style={Styles.container}>
           <ImageBackground
             source={Placeholder}
             imageStyle={{ resizeMode: 'contain' }}
-            style={MovieCardStyles.imageContainer}
+            style={Styles.imageContainer}
           >
             <Image
               ref={(ref) => {
                 this.imageRef = ref;
               }}
-              style={MovieCardStyles.image}
+              style={Styles.image}
               onLoad={this.handleOnLoad}
               source={{ uri: movie.medium_cover_image }}
             />
           </ImageBackground>
-          <View style={MovieCardStyles.textContainer}>
-            <Text style={MovieCardStyles.title} ellipsizeMode="tail" numberOfLines={1}>
+          <View style={Styles.textContainer}>
+            <Text style={Styles.title} ellipsizeMode="tail" numberOfLines={1}>
               {movie.title}
             </Text>
-            <View style={MovieCardStyles.yearRatingContainer}>
-              <Text style={MovieCardStyles.year}>{movie.year}</Text>
-              <View style={MovieCardStyles.ratingContainer}>
+            <View style={Styles.yearRatingContainer}>
+              <Text style={Styles.year}>{movie.year}</Text>
+              <View style={Styles.ratingContainer}>
                 <Icon name="star" size={20} color={green} />
-                <Text style={MovieCardStyles.rating}>
-                  {movie.rating}
-                  /10
-                </Text>
+                <Text style={Styles.rating}>{this.getRating(movie.rating)}</Text>
               </View>
             </View>
-            <View style={MovieCardStyles.ratingContainer}>
+            <View style={Styles.ratingContainer}>
               {movie.genres
                 ? movie.genres.slice(0, 2).map(genre => (
-                  <Text style={MovieCardStyles.genre} key={genre}>
+                  <Text style={Styles.genre} key={genre}>
                     {genre}
                   </Text>
                 ))
@@ -84,7 +83,7 @@ export default class MovieCard extends PureComponent {
               onPress={() => this.handleClick(movie, navigation)}
               raised
               text="View Details"
-              style={MovieCardStyles.button}
+              style={Styles.button}
             />
           </View>
         </View>

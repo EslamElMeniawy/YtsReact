@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Logo } from '../../utils/StaticImages';
 import * as Colors from '../../utils/Colors';
-import { GeneralStyles, SplashStyles } from '../../utils/Styles';
+import Styles from './Styles';
 
 export default class SplashScreen extends Component {
   componentDidMount() {
@@ -17,9 +17,9 @@ export default class SplashScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={GeneralStyles.safeAreaView}>
+      <SafeAreaView style={Styles.safeAreaView}>
         <StatusBar barStyle="light-content" backgroundColor={Colors.grey} />
-        <Image style={SplashStyles.image} source={Logo} />
+        <Image style={Styles.image} source={Logo} />
       </SafeAreaView>
     );
   }
