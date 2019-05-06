@@ -100,9 +100,8 @@ export default class MainScreen extends Component {
   // #region API methods
   getMovies() {
     const { page } = this.state;
-    const URL = `list_movies.json?limit=20&page=${page}`;
 
-    AxiosService.get(URL)
+    AxiosService.get(`list_movies.json?limit=20&page=${page}`)
       .then((response) => {
         this.handleResponse(response);
       })
