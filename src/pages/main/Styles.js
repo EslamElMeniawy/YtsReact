@@ -1,3 +1,4 @@
+import { PixelRatio } from 'react-native';
 import * as Colors from '../../utils/Colors';
 
 const Styles = {
@@ -8,9 +9,9 @@ const Styles = {
   toolbar: {
     container: { backgroundColor: Colors.grey },
     centerElementContainer: {
-      marginRight: 16,
-      marginTop: 8,
-      marginBottom: 8,
+      marginRight: PixelRatio.roundToNearestPixel(16),
+      marginTop: PixelRatio.roundToNearestPixel(8),
+      marginBottom: PixelRatio.roundToNearestPixel(8),
     },
     titleText: {
       color: Colors.white,
@@ -22,8 +23,8 @@ const Styles = {
     resizeMode: 'contain',
     width: undefined,
     height: undefined,
-    marginStart: 16,
-    marginEnd: 16,
+    marginStart: PixelRatio.roundToNearestPixel(16),
+    marginEnd: PixelRatio.roundToNearestPixel(16),
   },
   loadingErrorContainer: {
     flex: 1,
@@ -32,8 +33,8 @@ const Styles = {
   error: {
     color: Colors.greyLight,
     textAlign: 'center',
-    margin: 16,
-    fontSize: 20,
+    margin: PixelRatio.roundToNearestPixel(16),
+    fontSize: PixelRatio.roundToNearestPixel(20),
   },
   recycler: {
     flex: 1,

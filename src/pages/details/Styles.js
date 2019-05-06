@@ -1,3 +1,4 @@
+import { PixelRatio } from 'react-native';
 import * as Colors from '../../utils/Colors';
 
 const Styles = {
@@ -8,9 +9,9 @@ const Styles = {
   toolbar: {
     container: { backgroundColor: Colors.grey },
     centerElementContainer: {
-      marginRight: 16,
-      marginTop: 8,
-      marginBottom: 8,
+      marginRight: PixelRatio.roundToNearestPixel(16),
+      marginTop: PixelRatio.roundToNearestPixel(8),
+      marginBottom: PixelRatio.roundToNearestPixel(8),
     },
     titleText: {
       color: Colors.white,
@@ -27,8 +28,8 @@ const Styles = {
   error: {
     color: Colors.greyLight,
     textAlign: 'center',
-    margin: 16,
-    fontSize: 20,
+    margin: PixelRatio.roundToNearestPixel(16),
+    fontSize: PixelRatio.roundToNearestPixel(20),
   },
   background: {
     resizeMode: 'cover',
@@ -38,56 +39,56 @@ const Styles = {
   title: {
     color: Colors.white,
     fontWeight: 'bold',
-    marginTop: 16,
-    marginStart: 8,
-    marginEnd: 8,
+    marginTop: PixelRatio.roundToNearestPixel(16),
+    marginStart: PixelRatio.roundToNearestPixel(8),
+    marginEnd: PixelRatio.roundToNearestPixel(8),
   },
   yearGenres: {
     color: Colors.white,
-    marginTop: 8,
-    marginStart: 8,
-    marginEnd: 8,
+    marginTop: PixelRatio.roundToNearestPixel(8),
+    marginStart: PixelRatio.roundToNearestPixel(8),
+    marginEnd: PixelRatio.roundToNearestPixel(8),
   },
   container: {
-    marginTop: 8,
-    marginBottom: 16,
-    marginStart: 8,
-    marginEnd: 8,
+    marginTop: PixelRatio.roundToNearestPixel(8),
+    marginBottom: PixelRatio.roundToNearestPixel(16),
+    marginStart: PixelRatio.roundToNearestPixel(8),
+    marginEnd: PixelRatio.roundToNearestPixel(8),
     flexDirection: 'row',
   },
   imageContainer: {
-    width: 79,
-    height: 120,
+    width: PixelRatio.roundToNearestPixel(79),
+    height: PixelRatio.roundToNearestPixel(120),
     backgroundColor: Colors.greyLight,
     borderColor: Colors.white,
-    borderWidth: 2,
-    borderRadius: 8,
+    borderWidth: PixelRatio.roundToNearestPixel(2),
+    borderRadius: PixelRatio.roundToNearestPixel(8),
   },
   dataContainer: {
     flex: 1,
-    marginStart: 8,
+    marginStart: PixelRatio.roundToNearestPixel(8),
   },
   image: {
     flex: 1,
     resizeMode: 'contain',
-    width: 75,
-    height: 120,
-    borderRadius: 8,
+    width: PixelRatio.roundToNearestPixel(75),
+    height: PixelRatio.roundToNearestPixel(120),
+    borderRadius: PixelRatio.roundToNearestPixel(8),
   },
   rowContainer: {
     flexDirection: 'row',
-    marginTop: 8,
+    marginTop: PixelRatio.roundToNearestPixel(8),
   },
   durationRating: {
     color: Colors.white,
-    marginStart: 8,
+    marginStart: PixelRatio.roundToNearestPixel(8),
     alignSelf: 'center',
   },
   button: {
     container: {
       backgroundColor: Colors.greyDark,
-      margin: 8,
-      borderRadius: 16,
+      margin: PixelRatio.roundToNearestPixel(8),
+      borderRadius: PixelRatio.roundToNearestPixel(16),
       alignSelf: 'center',
       flex: 1,
     },
@@ -97,9 +98,9 @@ const Styles = {
     },
   },
   synopsisContainer: {
-    marginStart: 8,
-    marginEnd: 8,
-    marginTop: 16,
+    marginStart: PixelRatio.roundToNearestPixel(8),
+    marginEnd: PixelRatio.roundToNearestPixel(8),
+    marginTop: PixelRatio.roundToNearestPixel(16),
   },
   synopsisTitle: {
     color: Colors.white,
@@ -107,7 +108,7 @@ const Styles = {
   },
   synopsis: {
     color: Colors.greyLight,
-    marginTop: 8,
+    marginTop: PixelRatio.roundToNearestPixel(8),
   },
 };
 

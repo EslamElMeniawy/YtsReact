@@ -1,3 +1,4 @@
+import { PixelRatio } from 'react-native';
 import * as Colors from '../../utils/Colors';
 
 const Styles = {
@@ -9,10 +10,10 @@ const Styles = {
     flex: 1,
     alignSelf: 'center',
     resizeMode: 'contain',
-    width: 300,
+    width: PixelRatio.roundToNearestPixel(300),
     height: undefined,
-    marginStart: 16,
-    marginEnd: 16,
+    marginStart: PixelRatio.roundToNearestPixel(16),
+    marginEnd: PixelRatio.roundToNearestPixel(16),
   },
 };
 

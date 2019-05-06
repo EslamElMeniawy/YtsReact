@@ -5,7 +5,7 @@ import {
 import { Card, Icon, Button } from 'react-native-material-ui';
 import PropTypes from 'prop-types';
 
-import { logDebug } from '../../utils/DebugUtils';
+import Log from '../../utils/DebugUtils';
 import Styles from './Styles';
 import { Placeholder } from '../../utils/StaticImages';
 import { green } from '../../utils/Colors';
@@ -33,7 +33,7 @@ export default class MovieCard extends PureComponent {
   };
 
   handleClick = (movie, navigation) => {
-    logDebug('Clicked movie: ', movie);
+    Log('Clicked movie: ', movie);
     navigation.navigate('Details', { movie });
   };
 

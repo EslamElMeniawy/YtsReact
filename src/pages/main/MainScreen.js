@@ -12,7 +12,7 @@ import { Logo } from '../../utils/StaticImages';
 import Styles from './Styles';
 import { green } from '../../utils/Colors';
 import AxiosService from '../../utils/AxiosService';
-import { logDebug, logError } from '../../utils/DebugUtils';
+import Log from '../../utils/DebugUtils';
 import LayoutUtil from '../../utils/LayoutUtil';
 
 export default class MainScreen extends Component {
@@ -77,19 +77,22 @@ export default class MainScreen extends Component {
     const { navigation } = this.props;
 
     return (
-      <RecyclerListView
-        style={Styles.recycler}
-        dataProvider={dataProvider}
-        layoutProvider={layoutProvider}
-        rowRenderer={(type, movie) => <MovieCard navigation={navigation} movie={movie} />}
-        onEndReached={this.handleLoadMore}
-        onEndReachedThreshold={100}
-        scrollViewProps={{
-          refreshControl: (
-            <RefreshControl refreshing={isRefreshing} onRefresh={this.handleRefresh} />
-          ),
-        }}
-      />
+      <View style={Styles.recycler}>
+        <RecyclerListView
+          style={Styles.recycler}
+          dataProvider={dataProvider}
+          layoutProvider={layoutProvider}
+          rowRenderer={(type, movie) => <MovieCard navigation={navigation} movie={movie} />}
+          onEndReached={this.handleLoadMore}
+          onEndReachedThreshold={100}
+          scrollViewProps={{
+            refreshControl: (
+              <RefreshControl refreshing={isRefreshing} onRefresh={this.handleRefresh} />
+            ),
+          }}
+          canChangeSize
+        />
+      </View>
     );
   }
   // #endregion
@@ -99,23 +102,24 @@ export default class MainScreen extends Component {
     const { page } = this.state;
     const URL = `list_movies.json?limit=20&page=${page}`;
 
-    AxiosService.request({
-      url: URL,
-      method: 'GET',
-    })
-      .then(response => this.handleResponse(response))
-      .catch(error => this.handleError(error));
+    AxiosService.get(URL)
+      .then((response) => {
+        this.handleResponse(response);
+      })
+      .catch((error) => {
+        this.handleError(error);
+      });
   }
 
   handleRefresh = () => {
-    logDebug('onRefresh');
+    Log('onRefresh');
     this.setState({ page: 1, isRefreshing: true }, () => {
       this.getMovies();
     });
   };
 
   handleLoadMore = () => {
-    logDebug('onEndReached');
+    Log('onEndReached');
     this.setState(
       previousState => ({ page: previousState.page + 1, isRefreshing: true }),
       () => {
@@ -125,7 +129,7 @@ export default class MainScreen extends Component {
   };
 
   handleResponse(response) {
-    logDebug('Response: ', response);
+    Log('Response: ', response);
     let errorMessage = '';
     let { page } = this.state;
     let moviesList = [];
@@ -187,7 +191,25 @@ export default class MainScreen extends Component {
   }
 
   handleError(error) {
-    logError(error);
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      Log('Response Error');
+      Log('Data', error.response.data);
+      Log('Status', error.response.status);
+      Log('Headers', error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      Log('Request Error', error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      Log('Unknown Error');
+      Log('Message', error.message);
+    }
+
+    Log('Config', error.config);
 
     this.setState(previousState => ({
       page: previousState.page === 1 ? previousState.page : previousState.page - 1,

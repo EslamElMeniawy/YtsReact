@@ -13,7 +13,7 @@ import {
 import { Toolbar, Icon, Button } from 'react-native-material-ui';
 import PropTypes from 'prop-types';
 
-import { logDebug, logError } from '../../utils/DebugUtils';
+import Log from '../../utils/DebugUtils';
 import AppStatusBar from '../../components/AppStatusBar';
 import Styles from './Styles';
 import { Placeholder, Imdb } from '../../utils/StaticImages';
@@ -42,7 +42,7 @@ function openLink(link) {
     if (supported) {
       Linking.openURL(link);
     } else {
-      logError(`Don't know how to open URI: ${link}`);
+      Log(`Don't know how to open URI: ${link}`);
     }
   });
 }
@@ -145,7 +145,7 @@ function getContent(movie) {
 
 export default function DetailsScreen({ navigation }) {
   const movie = navigation.getParam('movie', {});
-  logDebug('Got movie: ', movie);
+  Log('Got movie: ', movie);
 
   return (
     <SafeAreaView style={Styles.safeAreaView}>
